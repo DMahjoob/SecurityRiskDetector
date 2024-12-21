@@ -8,10 +8,6 @@ An AI-driven tool to identify potential security vulnerabilities in software rep
 2. [Features](#features)
 3. [How It Works](#how-it-works)
 4. [Installation](#installation)
-5. [Usage](#usage)
-6. [Examples](#examples)
-7. [Contributing](#contributing)
-8. [License](#license)
 
 ---
 
