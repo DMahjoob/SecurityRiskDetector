@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Data Visualization for {{ category }}</title>
+</head>
+<body>
+    <h1>Average {{ data_request.capitalize() }} for all {{ category }} cases</h1>
+
+    <p>
+        {% if data_request == "severity" %}
+        This graph shows the severity of incidents over time for the selected category, where severity is calculated as a combination of incident grade and category risk level.
+        <br>
+        The higher the severity, the more malicious the attack.
+        {% elif data_request == "grade" %}
+        This graph illustrates the grade distribution over time, where grades represent the likelihood of an incident being malicious (e.g., TruePositive, BenignPositive, FalsePositive).
+        <br>
+        The higher the grade, the more accurate the security system was in determining this type of incident was an active threat.
+        {% endif %}
+    </p>
+
+    {% if project %}
+    <h3>Projection Date: {{ date }}</h3>
+    {% endif %}
+
+    <img src="{{ url_for('fig', data_request=data_request, category=category) }}" alt="Category Data Visualization">
+
+    <h1>Submit a Projection Date</h1>
+
+    <form action="{{ url_for('submit_projection') }}" method="POST">
+        <label for="date">Select Projection Date:</label>
+        <input type="date" name="date" id="date" required>
+        <button type="submit">Submit</button>
+    </form>
+    <br><a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>
